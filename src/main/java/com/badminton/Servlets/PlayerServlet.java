@@ -1,6 +1,8 @@
-package com.badminton;
+package com.badminton.Servlets;
 
 
+import com.badminton.NewPlayer;
+import com.badminton.PlayerFunctions;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

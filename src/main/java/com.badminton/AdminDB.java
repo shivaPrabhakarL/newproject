@@ -1,0 +1,59 @@
+package com.badminton;
+
+import com.badminton.Servlets.Adminlog;
+
+import java.sql.*;
+
+
+public class AdminDB {
+    private static Statement stmt;
+    public void dbConnection() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/taskdb", "testuser", "Pramati@123");
+            stmt = con.createStatement();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            String response = "Sql query not correct or no such data.";
+            System.out.println(response);
+        }
+    }
+
+    public AdminDB(){
+        dbConnection();
+    }
+
+    public void createOrUpdateDB(Admin admin){
+        try {
+            // stmt.executeUpdate("truncate table TaskList");
+            String query = "create table admintable(" +
+                    "Id INT PRIMARY KEY AUTO_INCREMENT, FirstName VARCHAR(255),LastName VARCHAR(255), UserName VARCHAR(255) UNIQUE, Email VARCHAR(255) UNIQUE, Password VARCHAR(255) UNIQUE )";
+            stmt.executeUpdate(query);
+            query = "insert into admintable values(" + admin.getId() + ",'" + admin.getFirstName() + "','" + admin.getLastName() + "', '" + admin.getUserName() + "','" + admin.getEmail() + "','" + admin.getPassword() + "' )";
+            stmt.executeUpdate(query);
+        } catch (Exception e) {
+            try {
+                String query = "insert into admintable values(" + admin.getId() + ",'" + admin.getFirstName() + "','" + admin.getLastName() + "', '" + admin.getUserName() + "','" + admin.getEmail() + "','" + admin.getPassword() + "' )";
+                System.out.println(query);
+                stmt.executeUpdate(query);
+            } catch (SQLException q) {
+                String response = "Sql query not correct or no such data.";
+                System.out.println(response);
+            }
+        }
+    }
+
+    public boolean verification(Adminlog al){
+        try{
+            String query = "select Password from admintable where Email = '"+ al.getEmail()+"'";
+            ResultSet rs = stmt.executeQuery(query);
+            String pass = rs.getString("Password");
+            return pass.equals(al.getPassword());
+        }catch (SQLException e){
+            String response = "Sql query not correct or no such data.";
+            System.out.println(response);
+            return false;
+        }
+    }
+
+}
