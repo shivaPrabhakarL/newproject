@@ -2,38 +2,44 @@ package com.badminton;
 
 public class Player {
 
-
     private String firstName;
     private String lastName;
+    private String userName;
     private String email;
     private String gender;
-    private String team;
     private String image;
     private String phone;
-    private String type; //Captain, Offense, Defense, Beginner, Marquee.
     private String shirtSize;
-    private int empId;
-    private int age;
-    private int matchesPlayed;
-    private int position;
-    private int bidStatus; // 1->Sold 0->NotSold -1->did not face bidding, Set to -1 in database as default, Change to 0 when player faces bidding
+    private String empId;
+    private String age;
+
+    public Player(String firstName, String lastName, String userName, String email, String gender, String image,
+                  String phone, String shirtSize, String empId, String age, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.email = email;
+        this.gender = gender;
+        this.image = image;
+        this.phone = phone;
+        this.shirtSize = shirtSize;
+        this.empId = empId;
+        this.age = age;
+        this.password = password;
+    }
+
     private String password;
 
-    Player(){}
 
-    Player(String firstName, String lastName, String email, String gender, String image,
-           String phone, String shirtSize, int empId, int age, String password)
-    {
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.email=email;
-        this.gender=gender;
-        this.image=image;
-        this.phone=phone;
-        this.shirtSize=shirtSize;
-        this.empId=empId;
-        this.age=age;
-        this.password=password;
+
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getFirstName() {
@@ -68,14 +74,6 @@ public class Player {
         this.gender = gender;
     }
 
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
     public String getImage() {
         return image;
     }
@@ -92,14 +90,6 @@ public class Player {
         this.phone = phone;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getShirtSize() {
         return shirtSize;
     }
@@ -108,44 +98,20 @@ public class Player {
         this.shirtSize = shirtSize;
     }
 
-    public int getEmpId() {
+    public String getEmpId() {
         return empId;
     }
 
-    public void setEmpId(int empId) {
+    public void setEmpId(String empId) {
         this.empId = empId;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
-    }
-
-    public int getMatchesPlayed() {
-        return matchesPlayed;
-    }
-
-    public void setMatchesPlayed(int matchesPlayed) {
-        this.matchesPlayed = matchesPlayed;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public int getBidStatus() {
-        return bidStatus;
-    }
-
-    public void setBidStatus(int bidStatus) {
-        this.bidStatus = bidStatus;
     }
 
     public String getPassword() {
@@ -155,4 +121,12 @@ public class Player {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    Player() {}
+
+
+
+
+
 }

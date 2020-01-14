@@ -3,33 +3,24 @@
          xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
-  <display-name>servlets</display-name>
+
+  <display-name>Servlet</display-name>
 
 
   <servlet>
-    <description></description>
-    <display-name>HelloWorld</display-name>
-    <servlet-name>AdminSignUp</servlet-name>
-    <servlet-class>com.badminton.Servlets.AdminSignUp</servlet-class>
+    <servlet-name>Servlet</servlet-name>
+    <servlet-class>com.badminton.Servlets.PlayerServlet</servlet-class>
   </servlet>
+
   <servlet-mapping>
-    <servlet-name>AdminSignUp</servlet-name>
-    <url-pattern></url-pattern>
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/PlayerServlet</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <description></description>
-    <display-name>HelloWorld</display-name>
-    <servlet-name>AdminLogIn</servlet-name>
-    <servlet-class>com.badminton.Servlets.AdminLogIn</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminLogIn</servlet-name>
-    <url-pattern></url-pattern>
-  </servlet-mapping>
 
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>player-login-signup.html</welcome-file>
   </welcome-file-list>
+
 
 </web-app>

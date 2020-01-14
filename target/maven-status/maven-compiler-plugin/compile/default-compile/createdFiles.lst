@@ -1,0 +1,9 @@
+com/badminton/Servlets/AdminLogIn.class
+com/badminton/TempClass.class
+com/badminton/Player.class
+com/badminton/PlayerDB.class
+com/badminton/Servlets/PlayerServlet.class
+com/badminton/Servlets/AdminSignUp.class
+com/badminton/Servlets/Adminlog.class
+com/badminton/AdminDB.class
+com/badminton/Admin.class
