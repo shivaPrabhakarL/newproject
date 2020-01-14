@@ -5,7 +5,6 @@
          id="WebApp_ID" version="2.5">
   <display-name>servlets</display-name>
 
-
   <servlet>
     <description></description>
     <display-name>HelloWorld</display-name>
@@ -14,9 +13,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminSignUp</servlet-name>
-    <url-pattern></url-pattern>
+    <url-pattern>/AdminSignUp</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description></description>
     <display-name>HelloWorld</display-name>
@@ -25,7 +23,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminLogIn</servlet-name>
-    <url-pattern></url-pattern>
+    <url-pattern>/AdminLogIn</url-pattern>
   </servlet-mapping>
 
   <welcome-file-list>

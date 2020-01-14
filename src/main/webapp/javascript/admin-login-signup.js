@@ -1,10 +1,34 @@
-function load( ){
-    const formContainer = document.createElement('div');
-     const form1 = signUpFunction();
-     const form2 = logInFunction()
-     formContainer.appendChild(form1);
-     formContainer.appendChild(form2);
-    document.body.appendChild(formContainer);
+var call = 1
+
+function loadAdmin(){
+    
+    
+    if(call > 1){
+        const body = document.body;
+       // window.location.reload();
+       const div1 = document.getElementById('playerForm');
+       const div2 = document.getElementById('adminForm'); 
+       if(div1!=="TypeError")
+            body.removeChild(div1);
+       else
+            body.removeChild(div2);
+        loadAdmin();
+       
+    }
+    else{
+        const body = document.body;
+       // window.location.reload();
+        const formContainer = document.createElement('div');
+        formContainer.setAttribute('id','adminForm');
+        const form1 = signUpFunction();
+        const form2 = logInFunction()
+        formContainer.appendChild(form1);
+        formContainer.appendChild(form2);
+        document.body.appendChild(formContainer);
+        console.log(call);
+        call += 1;
+        window.stop();
+    }
 
 }
 
