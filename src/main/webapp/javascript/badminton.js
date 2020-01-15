@@ -1,7 +1,22 @@
+
+     function newLoad(){
+        const body = document.body;
+        body.removeChild(document.getElementById('navbar'));
+              try{
+                       body.removeChild(document.getElementById('playerForm'));
+              }catch(error){
+                 try{
+                     body.removeChild(document.getElementById('adminForm'));
+                 }catch(error){}
+              }
+              loadHome();
+     }
+
 function loadHome(){
 
       var navbar=document.createElement('nav');
       navbar.setAttribute('class','homebar');
+      navbar.setAttribute('id','navbar');
       document.body.appendChild(navbar);
 
 
@@ -28,7 +43,7 @@ function loadHome(){
       var menu10=document.createElement("a");
       menu10.setAttribute('class','stats');
       menu10.href="#";
-      menu10.setAttribute('onclick','loadHome()')
+      menu10.setAttribute('onclick','newLoad()')
       menu10.textContent='Home';
       list0.appendChild(menu10);
 
@@ -106,11 +121,7 @@ function loadHome(){
     
 
     
-    
-     function newLoad(){
-     //navbar.style.visibility="hidden";
-     loadHome();
-     }
+
 
      function adminReg(){
       navbar.style.visibility="hidden";

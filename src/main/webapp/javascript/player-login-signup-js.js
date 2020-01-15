@@ -14,7 +14,7 @@ function loadPlayer( ){
         //window.stop();
     }
     else{
-        const body = document.getElementById('consist');
+        const body = document.body;
         try{
             body.removeChild(document.getElementById('adminForm'));
         }catch(error){
@@ -233,7 +233,7 @@ function psignUpFunction(){
    ppgenderInput.setAttribute('type','gender');
 
    const ppimageLabel = document.createElement('label');
-   ppimageLabel.textContent = "Image : ";
+   ppimageLabel.textContent = "Image URL: ";
    const ppimageInput = document.createElement('input');
    ppimageInput.setAttribute('name','image');
    ppimageInput.setAttribute('type','text');

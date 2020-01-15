@@ -18,7 +18,7 @@ function loadAdmin(){
        
     }
     else{
-        const body = document.getElementById('consist');
+        const body = document.body;
       try{
                body.removeChild(document.getElementById('playerForm'));
       }catch(error){
