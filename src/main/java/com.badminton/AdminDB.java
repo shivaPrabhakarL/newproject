@@ -49,6 +49,7 @@ public class AdminDB {
             ResultSet rs = stmt.executeQuery(query);
             if(rs.next()) {
                 String pass = rs.getString("Password");
+                System.out.println(pass);
                 return pass.equals(al.getPassword());
             }else{
                 return false;
