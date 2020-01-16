@@ -8,8 +8,8 @@
 
 #signupdiv{
     background-color: rgb(223, 235, 235);
-    height : 90%;
-    width: 48%;
+    height : 75%;
+    width: 46%;
     margin-left: 0%;
     float:right;
     margin-left: 20px;
@@ -21,8 +21,8 @@
 
 #logindiv{
     background-color: rgb(225, 235, 233);
-    height : 90%;
-    width: 47%;
+    height : 75%;
+    width: 46%;
     margin-left: 17px;
     margin-top:30px;
     float:left;

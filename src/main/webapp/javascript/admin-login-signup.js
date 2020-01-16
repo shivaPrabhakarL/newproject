@@ -1,4 +1,4 @@
-function load(){
+function load( ){
     const formContainer = document.createElement('div');
      const form1 = signUpFunction();
      const form2 = logInFunction()

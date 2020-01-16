@@ -11,13 +11,13 @@ public class Admin{
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId() {
+        this.id = this.id+1;
     }
 
 
 
-    Admin(){
+    public Admin(){
         this.id = this.id + 1;
     }
 
