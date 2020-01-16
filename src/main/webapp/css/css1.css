@@ -6,6 +6,33 @@
     justify-content: space-between;
 }
 
+table{
+    margin-left: 25%;
+    width: 50%;
+    text-align: start;
+}
+tr{
+    height: 5%;
+    margin-bottom: 17px;
+}
+
+#loginBtn{
+    margin-left: 120%;
+    margin-top: 20%;
+}
+
+#signBtn{
+    margin-left: 130%;
+    margin-top: 20%;
+}
+
+form{
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+}
+
 #signupdiv{
     background-color: rgb(223, 235, 235);
     height : 75%;

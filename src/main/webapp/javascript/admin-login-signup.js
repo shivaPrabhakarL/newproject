@@ -2,30 +2,7 @@ var call = 1
 
 function loadAdmin(){
     
-    
-    if(call > 1){
-        const body = document.body;
-       // window.location.reload();
-       try{
-         body.removeChild(document.getElementById('playerForm'));
-       }catch(error){
-            try{
-                body.removeChild(document.getElementById('adminForm'));
-            }catch(error){}
-       }
-       call = 0;
-      loadAdmin();
-       
-    }
-    else{
-        const body = document.body;
-      try{
-               body.removeChild(document.getElementById('playerForm'));
-      }catch(error){
-         try{
-             body.removeChild(document.getElementById('adminForm'));
-         }catch(error){}
-      }
+    loadHome();
 
        // window.location.reload();
         const formContainer = document.createElement('div');
@@ -37,8 +14,7 @@ function loadAdmin(){
         document.body.appendChild(formContainer);
         console.log(call);
         call += 1;
-        window.stop();
-    }
+        
 
 }
 
@@ -76,6 +52,7 @@ function logInFunction(){
     const logInForm = document.createElement('form');
     logInForm.setAttribute('method','POST');
     logInForm.setAttribute('action','AdminLogIn');
+    logInForm.setAttribute('name','adlogin');
 
 
     const emailLabel = document.createElement('label');
@@ -83,16 +60,24 @@ function logInFunction(){
     const emailInput = document.createElement('input');
     emailInput.setAttribute('name','email');
     emailInput.setAttribute('type','email');
+    emailInput.setAttribute("id","emailId");
+    emailInput.setAttribute('required','');
+
 
     const passwordLabel = document.createElement('label');
     passwordLabel.textContent = "Password : ";
     const passwordInput = document.createElement('input');
     passwordInput.setAttribute('name','password');
     passwordInput.setAttribute('type','password');
+    passwordInput.setAttribute("id","passwordId");
+    passwordInput.setAttribute('required','');
+
 
     const logInButton = document.createElement('input');
     logInButton.setAttribute('type','submit');
-    logInButton.setAttribute('value','Sign Up');
+    logInButton.setAttribute('id','loginBtn');
+    logInButton.setAttribute('value','Log In');
+    
     logInButton.style.alignContent = "centre";
 
 
@@ -164,40 +149,53 @@ function signUpFunction(){
     const signUpForm = document.createElement('form');
     signUpForm.setAttribute('method','POST');
     signUpForm.setAttribute('action','AdminSignUp');
+    signUpForm.setAttribute('name','adsignup');
 
     const firstNameLabel  = document.createElement('label');
     firstNameLabel.textContent = "First Name : ";
     const firstNameInput = document.createElement('input');
     firstNameInput.setAttribute('name','firstName');
     firstNameInput.setAttribute('type','text');
+    firstNameInput.setAttribute('required','');
+
 
     const lastNameLabel = document.createElement('label');
     lastNameLabel.textContent = "Last Name : ";
     const lastNameInput = document.createElement('input');
     lastNameInput.setAttribute('name','lastName');
     lastNameInput.setAttribute('type','text');
+    lastNameInput.setAttribute('required','');
+
 
     const userNameLabel = document.createElement('label');
     userNameLabel.textContent = "User Name : ";
     const userNameInput = document.createElement('input');
     userNameInput.setAttribute('name','userName');
     userNameInput.setAttribute('type','text');
+    userNameInput.setAttribute('required','');
+
 
    const emailLabel = document.createElement('label');
    emailLabel.textContent = "Email : ";
    const emailInput = document.createElement('input');
    emailInput.setAttribute('name','email');
    emailInput.setAttribute('type','email');
+   emailInput.setAttribute('required','');
+
 
    const passwordLabel = document.createElement('label');
    passwordLabel.textContent = "Password : ";
    const passwordInput = document.createElement('input');
    passwordInput.setAttribute('name','password');
    passwordInput.setAttribute('type','password');
+   passwordInput.setAttribute('required','');
+
 
    const signUpButton = document.createElement('input');
    signUpButton.setAttribute('type','submit');
    signUpButton.setAttribute('value','Sign Up');
+   signUpButton.setAttribute('id','signBtn');
+   signUpButton.setAttribute('onclick',' return validateAdminSignUpForm()');
    signUpButton.style.alignContent = "centre";
 
    td1.appendChild(firstNameLabel);
@@ -221,3 +219,43 @@ function signUpFunction(){
    return signUpDiv;
    
 }
+
+function validateAdminSignUpForm() {
+    var x = document.forms["adsignup"]["firstName"].value;
+
+    x = document.forms["adsignup"]["password"].value;
+    if (x == "") {
+      alert("Password must be filled out");
+      flag = false;
+    }else{
+        if(x.length<8){
+            alert("Password must be minimum 8 characters");
+            flag = false;
+        }
+    }
+
+    return flag;
+    
+  }
+
+
+
+  $(document).ready(function(){
+    $(document).on("click","#loginBtn", function(){
+
+     var email = $('#emailId').val();
+     var password = $('#passwordId').val();
+          $.get('AdminLogIn', {
+                  email : email,
+                  password : password
+          }, function(responseText) {
+                    //alert(responseText);
+                    console.log(responseText);
+               if(responseText=="success"){
+                        window.location.replace("AdminDashboard.html");
+                        }
+//                  else
+//                      alert(responseText);
+          });
+     });
+    });
