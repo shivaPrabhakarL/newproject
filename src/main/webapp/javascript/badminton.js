@@ -42,8 +42,8 @@ function loadHome(){
 
       var menu10=document.createElement("a");
       menu10.setAttribute('class','stats');
-      menu10.href="#";
-      menu10.setAttribute('onclick','newLoad()')
+      menu10.href="index.html";
+      //menu10.setAttribute('onclick','newLoad()')
       menu10.textContent='Home';
       list0.appendChild(menu10);
 
@@ -98,8 +98,8 @@ function loadHome(){
 
     var menu5=document.createElement("a");
      menu5.setAttribute('class',"stats");
-     menu5.href="#";
-     menu5.setAttribute('onclick','loadAdmin()');
+     menu5.href="adminReg.html";
+    // menu5.setAttribute('onclick','loadAdmin()');
      menu5.textContent='Admin Login';
      
      list4.appendChild(menu5);
@@ -110,8 +110,8 @@ function loadHome(){
 
     var menu6=document.createElement("a");
      menu6.setAttribute('class',"stats");     
-     menu6.href="#";
-     menu6.setAttribute('onclick','loadPlayer()');
+     menu6.href="playerReg.html";
+   //  menu6.setAttribute('onclick','loadPlayer()');
      menu6.textContent='Players Registrations';
     
      list5.appendChild(menu6);

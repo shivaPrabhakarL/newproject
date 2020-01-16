@@ -1,28 +1,7 @@
 var pcall = 1
 function loadPlayer( ){
-    if(pcall > 1){
-        const body = document.body;
-       try{
-         body.removeChild(document.getElementById('adminForm'));
-       }catch(error){
-            try{
-                body.removeChild(document.getElementById('playerForm'));
-            }catch(error){}
-       }
-       pcall = 0;
-        loadPlayer();
-        //window.stop();
-    }
-    else{
-        const body = document.body;
-        try{
-            body.removeChild(document.getElementById('adminForm'));
-        }catch(error){
-            try{
-                body.removeChild(document.getElementById('playerForm'));
-            }catch(error){}
-        }
 
+    loadHome();
        // window.location.reload();
     const pformContainer = document.createElement('div');
     pformContainer.setAttribute('id','playerForm');
@@ -33,7 +12,7 @@ function loadPlayer( ){
     document.body.appendChild(pformContainer);
     pcall += 1;
     window.stop();
-    }
+
 
 }
 
@@ -70,7 +49,8 @@ function plogInFunction(){
 
     const plogInForm = document.createElement('form');
     plogInForm.setAttribute('method','POST');
-    plogInForm.setAttribute('action','AdminLogIn');
+    plogInForm.setAttribute('action','PlayerLogin');
+    plogInForm.setAttribute('name','plogin');
 
 
     const pemailLabel = document.createElement('label');
@@ -78,16 +58,21 @@ function plogInFunction(){
     const pemailInput = document.createElement('input');
     pemailInput.setAttribute('name','email');
     pemailInput.setAttribute('type','email');
+    pemailInput.setAttribute('required','');
+
 
     const ppasswordLabel = document.createElement('label');
     ppasswordLabel.textContent = "Password : ";
     const ppasswordInput = document.createElement('input');
     ppasswordInput.setAttribute('name','password');
     ppasswordInput.setAttribute('type','password');
+    ppasswordInput.setAttribute('required','');
 
     const plogInButton = document.createElement('input');
     plogInButton.setAttribute('type','submit');
-    plogInButton.setAttribute('value','Sign Up');
+    plogInButton.setAttribute('value','Log In');
+    plogInButton.setAttribute('id','loginBtn');
+    plogInButton.setAttribute('onclick','return validatePlayerLogIn()')
     plogInButton.style.alignContent = "centre";
 
 
@@ -200,6 +185,7 @@ function psignUpFunction(){
 
     const ppsignUpForm = document.createElement('form');
     ppsignUpForm.setAttribute('method','POST');
+    ppsignUpForm.setAttribute('name','plsignup');
     ppsignUpForm.setAttribute('action','PlayerServlet');
 
     const ppfirstNameLabel  = document.createElement('label');
@@ -207,60 +193,79 @@ function psignUpFunction(){
     const ppfirstNameInput = document.createElement('input');
     ppfirstNameInput.setAttribute('name','firstName');
     ppfirstNameInput.setAttribute('type','text');
+    ppfirstNameInput.setAttribute('required','');
+
 
     const pplastNameLabel = document.createElement('label');
     pplastNameLabel.textContent = "Last Name : ";
     const pplastNameInput = document.createElement('input');
     pplastNameInput.setAttribute('name','lastName');
     pplastNameInput.setAttribute('type','text');
+    pplastNameInput.setAttribute('required','');
+
 
     const ppuserNameLabel = document.createElement('label');
     ppuserNameLabel.textContent = "User Name : ";
     const ppuserNameInput = document.createElement('input');
     ppuserNameInput.setAttribute('name','userName');
     ppuserNameInput.setAttribute('type','text');
+    ppuserNameInput.setAttribute('required','');
+
 
    const ppemailLabel = document.createElement('label');
    ppemailLabel.textContent = "Email : ";
    const ppemailInput = document.createElement('input');
    ppemailInput.setAttribute('name','email');
    ppemailInput.setAttribute('type','email');
+   ppemailInput.setAttribute('required','');
+
 
    const ppgenderLabel = document.createElement('label');
    ppgenderLabel.textContent = "Gender : ";
    const ppgenderInput = document.createElement('input');
    ppgenderInput.setAttribute('name','gender');
    ppgenderInput.setAttribute('type','gender');
+   ppgenderInput.setAttribute('required','');
+
 
    const ppimageLabel = document.createElement('label');
    ppimageLabel.textContent = "Image URL: ";
    const ppimageInput = document.createElement('input');
    ppimageInput.setAttribute('name','image');
    ppimageInput.setAttribute('type','text');
+   ppimageInput.setAttribute('required','');
+
 
    const ppphoneLabel = document.createElement('label');
    ppphoneLabel.textContent = "phone : ";
    const ppphoneInput = document.createElement('input');
    ppphoneInput.setAttribute('name','phone');
    ppphoneInput.setAttribute('type','text');
+   ppphoneInput.setAttribute('required','');
+
 
    const ppshirtSizeLabel = document.createElement('label');
    ppshirtSizeLabel.textContent = "ShirtSize : ";
    const ppshirtSizeInput = document.createElement('input');
    ppshirtSizeInput.setAttribute('name','shirtSize');
    ppshirtSizeInput.setAttribute('type','text');
+   ppshirtSizeInput.setAttribute('required','');
+
 
    const ppempIdLabel = document.createElement('label');
    ppempIdLabel.textContent = "empId : ";
    const ppempIdInput = document.createElement('input');
    ppempIdInput.setAttribute('name','empId');
    ppempIdInput.setAttribute('type','text');
+   ppempIdInput.setAttribute('required','');
+
 
    const ppageLabel = document.createElement('label');
    ppageLabel.textContent = "age : ";
    const ppageInput = document.createElement('input');
    ppageInput.setAttribute('name','age');
    ppageInput.setAttribute('type','text');
+   ppageInput.setAttribute('required','');
 
 
    const pppasswordLabel = document.createElement('label');
@@ -268,10 +273,13 @@ function psignUpFunction(){
    const pppasswordInput = document.createElement('input');
    pppasswordInput.setAttribute('name','password');
    pppasswordInput.setAttribute('type','password');
+   pppasswordInput.setAttribute('required','');
 
    const ppsignUpButton = document.createElement('input');
    ppsignUpButton.setAttribute('type','submit');
    ppsignUpButton.setAttribute('value','Sign Up');
+   ppsignUpButton.setAttribute('id','signBtn');
+   ppsignUpButton.setAttribute('onclick','return validatePlayerSignUpForm()');
    ppsignUpButton.style.alignContent = "centre";
 
    pptd1.appendChild(ppfirstNameLabel);
@@ -317,3 +325,102 @@ function psignUpFunction(){
    return psignUpDiv;
 
 }
+
+function validatePlayerSignUpForm() {
+    var xa = document.forms["plsignup"]["firstName"].value;
+    var aflag = true;
+    if (xa == "") {
+      alert("First name must be filled out");
+      aflag = false;
+    }
+    
+
+    xa = document.forms["plsignup"]["lastName"].value;
+    if (xa == "") {
+      alert("Last name must be filled out");
+      aflag = false;
+    }
+
+    xa = document.forms["plsignup"]["userName"].value;
+    if (xa == "") {
+      alert("User name must be filled out");
+      aflag = false;
+    }
+
+    xa = document.forms["plsignup"]["phone"].value;
+    if (xa == "") {
+      alert("Phone must be filled out");
+      aflag = false;
+    }
+
+    xa = document.forms["plsignup"]["shirtSize"].value;
+    if (xa == "") {
+      alert("Shirt size must be filled out");
+      aflag = false;
+    }
+
+    xa = document.forms["plsignup"]["empId"].value;
+    if (xa == "") {
+      alert("Employee ID must be filled out");
+      aflag = false;
+    }    
+
+    xa = document.forms["plsignup"]["age"].value;
+    if (xa == "") {
+      alert("Age must be filled out");
+      aflag = false;
+    }
+
+    xa = document.forms["plsignup"]["image"].value;
+    if (xa == "") {
+      alert("Image URl must be filled out");
+      aflag = false;
+    }
+
+    xa = document.forms["plsignup"]["email"].value;
+    if (xa == "") {
+      alert("Email must be filled out");
+      aflag = false;
+    }
+
+    var xap = document.forms["plsignup"]["password"].value;
+    if (xap == "") {
+      alert("Password must be filled out");
+      aflag = false;
+    }else{
+        if(xap.length<8){
+            alert("Password must be minimum 8 characters");
+            aflag = false;
+        }
+    }
+    if(aflag === true){
+        alert("SUCCESS");
+    }
+    return aflag;
+  }
+
+  function validatePlayerLogIn(){
+    var aflag1 = true;
+    var xa1 = document.forms["plogin"]["email"].value;
+    if (xa1 == "") {
+      alert("Email must be filled out");
+      aflag1 = false;
+    }
+
+    xa1 = document.forms["plogin"]["password"].value;
+    if (xa1 == "") {
+      alert("Password must be filled out");
+      aflag1 = false;
+    }else{
+        
+        if(xa1.length<8){
+            alert("Password must be minimum 8 characters");
+            aflag1 = false;
+        }
+    }
+    if(aflag1 === true){
+        alert("SUCCESS");
+    }
+    return aflag1;
+
+  }

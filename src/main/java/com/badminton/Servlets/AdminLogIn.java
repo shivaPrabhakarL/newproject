@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 //import javax.servlet.ServletException;
 //import javax.servlet.ServletException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,26 +17,29 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
-@WebServlet(name = "AdminLogIn",urlPatterns = "/1/AdminLogIn")
+@WebServlet(name = "AdminLogIn",urlPatterns = "/AdminLogIn")
 public class AdminLogIn extends HttpServlet{
     ObjectMapper objectMapper = new ObjectMapper();
 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         Adminlog admin = new Adminlog();
         admin.setEmail(req.getParameter("email"));
         admin.setPassword(req.getParameter("password"));
         AdminDB adb = new AdminDB();
         PrintWriter p = resp.getWriter();
-        if(adb.verification(admin))
-            p.println("hi  thanks for logging in.");
+        if(adb.verification(admin)) {
+            doGet(req,resp);
+        }
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter o = resp.getWriter();
-        o.println("hi");
+        RequestDispatcher requestDispatcher;
+        requestDispatcher = req.getRequestDispatcher("/adminReg.html");
+        requestDispatcher.forward(req, resp);
     }
 }
