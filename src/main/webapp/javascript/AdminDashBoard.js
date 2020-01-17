@@ -1,13 +1,4 @@
-//window.onload = showDisplay();
-
-function AdminDash(){
-    loadHome();
-    try{
-        body.removeChild(document.getElementById('adminForm'));
-    }catch(error){}
-    showDisplay();
-}
-
+window.onload = showDisplay();
 
 function showDisplay()
 {
@@ -65,6 +56,7 @@ function showDisplay()
     image.className = "tasklogo";
     div.appendChild(image);
 
+    div.setAttribute('onclick','location.href="ModifyPlayer.html"');
     Conatainer.appendChild(div);
 
     var div = document.createElement('div');
@@ -92,7 +84,7 @@ function showDisplay()
     image.className = "tasklogo";
     div.appendChild(image);
 
-    div.setAttribute('onclick','location.href="LiveUpdate.html"');
+    div.setAttribute('onclick','location.href="Settings.html"');
     Conatainer.appendChild(div);
 
 

@@ -2,10 +2,10 @@
 {
     display: inline-block;
     margin: 2%;
-    border: 6px solid rgb(149, 218, 149);
+    border: 7px solid rgb(149, 218, 149);
     border-radius: 50px;
     text-align: center;
-    background-color: lightslategray;
+    background-color:transparent;
 }
 
 .cards:hover
@@ -26,23 +26,24 @@
 
 .container
 {
-    background-image: url("https://cdn1.epicgames.com/ue/item/Badminton_Screenshot_1-1920x1080-2cf8892509c158692884b8d9548cf005.png");
     display: inline-block;
+    height: 100%;
     width: 100%;
-    background-size:auto;
-    
 }
 
 body
 {
-
+    background-image: url("https://cdn1.epicgames.com/ue/item/Badminton_Screenshot_1-1920x1080-2cf8892509c158692884b8d9548cf005.png");
     align-content: center;
     background-size:cover;
     width: 100%;
     height: 100%;
+    margin-left: 6%;
+    margin-top: 0%;
 }
 
 h2
 {
     align-content: center;
+    color: wheat;
 }
