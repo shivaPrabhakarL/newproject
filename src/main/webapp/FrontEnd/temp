@@ -1,0 +1,2 @@
+ image.setAttribute('height',10);
+    image.setAttribute('width',140);

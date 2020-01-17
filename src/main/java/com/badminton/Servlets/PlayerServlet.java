@@ -5,11 +5,14 @@ import com.badminton.Player;
 import com.badminton.PlayerDB;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+@WebServlet(name = "PlayerServlet", urlPatterns = "/PlayerServlet")
 public class PlayerServlet extends HttpServlet {
 
     public PlayerServlet()

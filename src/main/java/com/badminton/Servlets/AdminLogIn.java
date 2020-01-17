@@ -24,22 +24,23 @@ public class AdminLogIn extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+       // RequestDispatcher requestDispatcher;
         Adminlog admin = new Adminlog();
         admin.setEmail(req.getParameter("email"));
         admin.setPassword(req.getParameter("password"));
         AdminDB adb = new AdminDB();
         PrintWriter p = resp.getWriter();
         if(adb.verification(admin)) {
-            doGet(req,resp);
+//            requestDispatcher = req.getRequestDispatcher("/adminReg.html");
+//            requestDispatcher.forward(req, resp);
+            resp.getWriter().write("success");
         }
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher;
-        requestDispatcher = req.getRequestDispatcher("/adminReg.html");
-        requestDispatcher.forward(req, resp);
+
+
     }
 }
