@@ -46,18 +46,14 @@ public class AdminDB {
     public boolean verification(Adminlog al){
         try{
             String query = "select Password from admintable where Email = '"+ al.getEmail()+"'";
-            try {
-                ResultSet rs = stmt.executeQuery(query);
-                if(rs.next()) {
-                    String pass = rs.getString("Password");
-                    return pass.equals(al.getPassword());
-                }else{
-                    return false;
-                }
-            }catch(NullPointerException n){
+            ResultSet rs = stmt.executeQuery(query);
+            if(rs.next()) {
+                String pass = rs.getString("Password");
+                System.out.println(pass);
+                return pass.equals(al.getPassword());
+            }else{
                 return false;
             }
-
         }catch (SQLException e){
             String response = "Sql query not correct or no such data.";
             System.out.println(response);

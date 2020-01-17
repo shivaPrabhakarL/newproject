@@ -254,8 +254,8 @@ function validateAdminSignUpForm() {
                if(responseText=="success"){
                         window.location.replace("AdminDashboard.html");
                         }
-//                  else
-//                      alert(responseText);
+                else
+                      alert(responseText);
           });
      });
     });
